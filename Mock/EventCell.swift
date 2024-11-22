@@ -29,5 +29,5 @@ class EventCell: UITableViewCell {
         view.layer.shadowOffset = CGSize.zero
         view.layer.shadowRadius = shadowRadius
     }
-    
+    // commit nè
 }
