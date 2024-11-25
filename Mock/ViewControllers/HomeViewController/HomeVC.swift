@@ -15,6 +15,8 @@ class HomeVC: UIViewController {
     @IBOutlet weak var eventUnderscore : UIView!
     @IBOutlet weak var navBar : UIView!
     @IBOutlet weak var pageFrame : UIView!
+    @IBOutlet weak var titleLB : UILabel!
+    
 
     var modeNews = true {
         didSet {
@@ -52,11 +54,7 @@ class HomeVC: UIViewController {
         self.VCs = [NewsVC(), EventVC()]
         self.pageController?.setViewControllers([self.VCs[0]], direction: .forward, animated: false)
         
-        let label = UILabel()
-        label.textColor = UIColor.white
-        label.text = "Trang chủ "
-        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
+      
 
     }
     

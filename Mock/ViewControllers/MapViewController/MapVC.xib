@@ -24,12 +24,20 @@
                         <constraint firstAttribute="width" secondItem="f2C-fE-ewp" secondAttribute="height" multiplier="375:132" id="DGd-bj-Bo3"/>
                     </constraints>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gần tôi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwQ-dW-1GW">
+                    <rect key="frame" x="16" y="54.999999999999993" width="79" height="28.666666666666664"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <color key="textColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="vwQ-dW-1GW" firstAttribute="centerY" secondItem="f2C-fE-ewp" secondAttribute="centerY" id="IYj-tj-7zr"/>
                 <constraint firstItem="f2C-fE-ewp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ku9-jS-L05"/>
                 <constraint firstItem="f2C-fE-ewp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="PMM-Dr-MCY"/>
+                <constraint firstItem="vwQ-dW-1GW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="mCw-fp-tAO"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="f2C-fE-ewp" secondAttribute="trailing" id="sV5-cG-5z2"/>
             </constraints>
             <point key="canvasLocation" x="130.53435114503816" y="-11.267605633802818"/>

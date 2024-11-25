@@ -68,11 +68,11 @@ extension UserViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
-        let detailVC = storyboard?.instantiateViewController(identifier: "Detail") as? DetailViewController
-        if let vc = detailVC {
-            detailVC?.name = ""
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+//        let detailVC = storyboard?.instantiateViewController(identifier: "Detail") as? DetailViewController
+//        if let vc = detailVC {
+//            detailVC?.name = ""
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return (deadline[section])

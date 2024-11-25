@@ -74,6 +74,12 @@
                         <action selector="signUp:" destination="-1" eventType="touchUpInside" id="BFW-TT-ONB"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cá nhân" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMr-Zd-qb2">
+                    <rect key="frame" x="26.000000000000007" y="54.999999999999993" width="91.666666666666686" height="28.666666666666664"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <color key="textColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="DDW-u8-qY5"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -88,9 +94,11 @@
                 <constraint firstItem="apS-Dc-Fh9" firstAttribute="centerX" secondItem="sif-cq-y4e" secondAttribute="centerX" id="NY1-P3-Lg3"/>
                 <constraint firstItem="ilR-2f-VVw" firstAttribute="top" secondItem="sif-cq-y4e" secondAttribute="top" id="Ro2-8k-soG"/>
                 <constraint firstItem="ilR-2f-VVw" firstAttribute="leading" secondItem="DDW-u8-qY5" secondAttribute="leading" id="TSF-Nh-lZb"/>
+                <constraint firstItem="MMr-Zd-qb2" firstAttribute="leading" secondItem="DDW-u8-qY5" secondAttribute="leading" constant="26" id="Wgi-K1-009"/>
                 <constraint firstItem="DDW-u8-qY5" firstAttribute="trailing" secondItem="ilR-2f-VVw" secondAttribute="trailing" id="XXh-Cb-mAe"/>
                 <constraint firstItem="HdT-h7-qi1" firstAttribute="centerX" secondItem="sif-cq-y4e" secondAttribute="centerX" id="ZCo-Hd-C0h"/>
                 <constraint firstItem="DDW-u8-qY5" firstAttribute="trailing" secondItem="4sk-xb-zfD" secondAttribute="trailing" constant="16" id="ahO-FS-7gy"/>
+                <constraint firstItem="MMr-Zd-qb2" firstAttribute="centerY" secondItem="ilR-2f-VVw" secondAttribute="centerY" id="fMF-um-OVN"/>
                 <constraint firstItem="Qbi-G2-O4A" firstAttribute="top" secondItem="Xys-M2-6Kp" secondAttribute="bottom" id="kLi-7M-RKW"/>
                 <constraint firstItem="apS-Dc-Fh9" firstAttribute="top" secondItem="60M-xg-irt" secondAttribute="bottom" constant="8" id="pje-Ge-Esl"/>
                 <constraint firstItem="Xys-M2-6Kp" firstAttribute="top" secondItem="4sk-xb-zfD" secondAttribute="bottom" constant="31" id="pt3-Cy-tvT"/>

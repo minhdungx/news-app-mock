@@ -11,11 +11,14 @@ class CategoryVC: UIViewController {
     @IBOutlet weak var categoryTable: UITableView!
     @IBOutlet weak var searchBtn: UIButton!
     @IBOutlet weak var searchBox: UITextField!
+    @IBOutlet weak var titleLB : UILabel!
+
     
     var searchMode = false {
         didSet {
             searchBtn.isHidden = searchMode
             searchBox.isHidden = !searchMode
+            titleLB.isHidden = searchMode
         }
     }
     
@@ -27,7 +30,7 @@ class CategoryVC: UIViewController {
         let nib = UINib(nibName: "CategoryCell", bundle: .main)
         categoryTable.register(nib, forCellReuseIdentifier: "cell")
         searchMode = false
-        
+        self.navigationController?.isNavigationBarHidden = true
         let label = UILabel()
         label.textColor = UIColor.white
         label.text = "Danh mục"

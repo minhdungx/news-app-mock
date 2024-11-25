@@ -8,15 +8,11 @@
 import UIKit
 
 class MapVC: UIViewController {
-
+    @IBOutlet weak var titleLB : UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let label = UILabel()
-        label.textColor = UIColor.white
-        label.text = "Gần tôi "
-        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
-
+        
         // Do any additional setup after loading the view.
     }
 
