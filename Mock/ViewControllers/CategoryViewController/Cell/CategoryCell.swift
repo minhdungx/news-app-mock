@@ -16,14 +16,7 @@ class CategoryCell: UITableViewCell {
         super.awakeFromNib()
         logoBg.setGradient(fillColors: [CategoryCell.UIColorFromRGB(0x5d20cd), CategoryCell.UIColorFromRGB(0x884ff1)], orientation: .vertical)
         logoBg.roundEachCorners(corners: [.topRight , .bottomRight], radius: 20)
-        dropShadow(view: shadowWrap)
-    }
-    
-    func dropShadow(view: UIView, shadowOpacity: Float = 0.2, shadowColor: CGColor = UIColor.gray.cgColor, shadowRadius: CGFloat = 5){
-        view.layer.shadowColor = shadowColor
-        view.layer.shadowOpacity = shadowOpacity
-        view.layer.shadowOffset = CGSize.zero
-        view.layer.shadowRadius = shadowRadius
+        shadowWrap.dropShadow()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

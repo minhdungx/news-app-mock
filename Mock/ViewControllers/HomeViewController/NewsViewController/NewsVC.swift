@@ -7,9 +7,19 @@
 
 import UIKit
 
+protocol newsDelegate {
+    func eventPass(event: Event)
+}
+
 class NewsVC: UIViewController {
 
     @IBOutlet weak var tableView : UITableView!
+    
+    var articles: [Event] = []
+    var q = "arcane"
+    var page = 1
+    var pageSize = 10
+    var homeVC: newsDelegate? 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,19 +27,16 @@ class NewsVC: UIViewController {
         tableView.register(nib, forCellReuseIdentifier: "cell")
         tableView.dataSource = self
         tableView.delegate = self
-        loadAPI2()
-        
     }
     
-    var articles: [Article] = []
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadAPI2(pageNum: page)
+    }
     
-    var q = "arcane"
-    var page = 1
-    var pageSize = 10
-    
-    @objc func loadAPI2() {
+    func loadAPI2(pageNum: Int) {
             print("LOAD API")
-            loadAPI { (done, msg) in
+        loadAPI(pageNum: pageNum) { (done, msg) in
                 if done {
                     self.tableView.reloadData()
                 } else {
@@ -38,8 +45,8 @@ class NewsVC: UIViewController {
             }
         }
     
-    func loadAPI(completion: @escaping Completion) {
-        let urlString = "https://newsapi.org/v2/everything?q=\(q)&apiKey=\(API_KEY)&pageSize=\(pageSize)&page=\(page)"
+    func loadAPI(pageNum: Int, completion: @escaping Completion ) {
+        let urlString = "https://newsapi.org/v2/everything?q=\(q)&apiKey=\(API_KEY)&pageSize=\(pageSize)&page=\(pageNum)"
         
         NetworkingManager.shared().request(with: urlString) { (data, error) in
             if let error = error {
@@ -50,7 +57,7 @@ class NewsVC: UIViewController {
                     let results  = json["articles"] as! [JSON]
                     
                     for item in results {
-                        let article = Article(json: item)
+                        let article = Event(json: item)
                         self.articles.append(article)
                         
                         completion(true, "" )
@@ -77,13 +84,13 @@ extension NewsVC: UITableViewDelegate , UITableViewDataSource {
             cell.titleLb.text = item.title
             cell.authorLb.text = "Bởi \(item.author ?? "")"
             cell.sourceLb.text = "Từ \(item.source ?? "")"
-            
+
             if item.thumbnailImg != nil {
                 cell.thumnailImg.image = item.thumbnailImg
             } else {
                 cell.thumnailImg.image = nil
                 
-                NetworkingManager.shared().downloadImage(url: item.thumbnalURL ?? "" ) { (image) in
+                NetworkingManager.shared().downloadImage(url: item.thumbnailURL ?? "" ) { (image) in
                     if let image = image {
                         cell.thumnailImg.image = image
                         item.thumbnailImg = image
@@ -92,6 +99,10 @@ extension NewsVC: UITableViewDelegate , UITableViewDataSource {
                     }
                 }
             }
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy/MM/dd"
+            cell.dateLb.text = dateFormatter.string(from: item.date ?? Date())
             
             return cell
         } else {
@@ -103,5 +114,18 @@ extension NewsVC: UITableViewDelegate , UITableViewDataSource {
         return UITableView.automaticDimension
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastElement  = articles.count - 3
+        if indexPath.row == lastElement {
+            self.page += 1
+            loadAPI2(pageNum: self.page)
+        }
+    }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
+
+    
+
 }
+    

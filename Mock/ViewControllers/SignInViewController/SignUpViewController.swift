@@ -105,6 +105,7 @@ class SignUpViewController: UIViewController {
             homeVC.title = "Trang chủ"
             homeVC.tabBarItem = UITabBarItem(title: "Trang chủ", image: UIImage(named: "icon-home")?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "icon-home-filled")?.withRenderingMode(.alwaysOriginal))
             
+            
             let mapVC = UINavigationController(rootViewController: MapVC())
             mapVC.title = "Gần tôi"
             mapVC.tabBarItem = UITabBarItem(title: "Gần tôi", image: UIImage(named: "icon-located")?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "icon-located-filled")?.withRenderingMode(.alwaysOriginal))
@@ -119,10 +120,9 @@ class SignUpViewController: UIViewController {
             tabBar.viewControllers = [homeVC, mapVC , categoryVC, profileVC]
             
 //            self.navigationController?.pushViewController(tabBar, animated: true)
-            tabBar.modalPresentationStyle = .fullScreen
-            self.present(tabBar, animated: true)
-            
-
+            let tabBarNav = UINavigationController(rootViewController: tabBar)
+            tabBarNav.modalPresentationStyle = .fullScreen
+            self.present(tabBarNav, animated: true)
         }
     }
         

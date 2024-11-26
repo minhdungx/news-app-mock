@@ -15,7 +15,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var eventUnderscore : UIView!
     @IBOutlet weak var navBar : UIView!
     @IBOutlet weak var pageFrame : UIView!
-    @IBOutlet weak var titleLB : UILabel!
+
     
 
     var modeNews = true {
@@ -51,12 +51,19 @@ class HomeVC: UIViewController {
         self.addChild(self.pageController!)
         self.view.addSubview(self.pageController!.view)
         self.pageController?.didMove(toParent: self)
-        self.VCs = [NewsVC(), EventVC()]
+        let newsVC = NewsVC()
+        newsVC.homeVC = self
+        let eventVC = EventVC()
+        self.VCs = [newsVC, eventVC]
         self.pageController?.setViewControllers([self.VCs[0]], direction: .forward, animated: false)
-        
-      
-
     }
+    
+        func viewDetail(event: () -> Event) {
+            let event = event()
+            let detailVC = DetailViewController()
+            detailVC.event = event
+            self.tabBarController?.navigationController?.pushViewController(detailVC, animated: true)
+        }
     
     @IBAction func newsTab (_ sender: UIButton){
         modeNews = true
@@ -68,6 +75,14 @@ class HomeVC: UIViewController {
 
 }
 
+extension HomeVC: newsDelegate {
+    func eventPass(event: Event){
+        let detailVC = DetailViewController()
+        detailVC.event = event
+        self.tabBarController?.navigationController?.pushViewController(detailVC, animated: true)
+    }
+}
+
 extension HomeVC : UIPageViewControllerDataSource, UIPageViewControllerDelegate{
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let curId = self.VCs.firstIndex(of: viewController) else {return nil}
@@ -77,7 +92,7 @@ extension HomeVC : UIPageViewControllerDataSource, UIPageViewControllerDelegate{
         }
         return nil
     }
-   
+
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let curId = self.VCs.firstIndex(of: viewController) else {return nil}
         let previousId = curId - 1
@@ -91,14 +106,7 @@ extension HomeVC : UIPageViewControllerDataSource, UIPageViewControllerDelegate{
         if completed == true {
             self.modeNews = !self.modeNews
         }
-        
     }
     
-//    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-//        return 2
-//    }
-//    
-//    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-//        return self.currentIndex
-//    }
+
 }

@@ -31,6 +31,14 @@ extension UIView {
         gradientLayer.locations = [0.0, 4.0]
         layer.insertSublayer(gradientLayer, at: 0)
     }
+    
+    func dropShadow(shadowOpacity: Float = 0.2, shadowColor: CGColor = UIColor.gray.cgColor, shadowRadius: CGFloat = 5){
+        self.layer.shadowColor = shadowColor
+        self.layer.shadowOpacity = shadowOpacity
+        self.layer.shadowOffset = CGSize.zero
+        self.layer.shadowRadius = shadowRadius	
+    }
+
 
     
     @IBInspectable

@@ -33,7 +33,6 @@ class SignInRequiredViewController: UIViewController {
         let VC = storyboard?.instantiateViewController(identifier: "SignUpIn") as? SignUpViewController
         
         if let vc = VC{
-            
             self.navigationController?.pushViewController(vc, animated: true)
             vc.modeSignUp = true
         }
